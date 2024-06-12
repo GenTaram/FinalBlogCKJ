@@ -28,12 +28,12 @@ spring:
       validation-timeout: 5000  # 커넥션 유효성 검사 타임아웃 설정 (ms)
       auto-commit: true  # 자동 커밋 모드 설정
 server:
-  port: 7070
+  port: 8080
   servlet:
     session:
       timeout: 600  # 600초 10분임, 기본값 30분
 db:
-  url: jdbc:mysql://210.102.226.242:8080/db_2024
+  url: jdbc:mysql://localhost:3306/blog_b202012055
   username: root
   password: cometrue
   driver-class-name: com.mysql.cj.jdbc.Driver
