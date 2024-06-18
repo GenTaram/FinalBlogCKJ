@@ -7,21 +7,21 @@
 <body>
 <div th:fragment="head">
     <link
-            rel="apple-touch-icon"
+            rel="friendship-icon"
             sizes="180x180"
-            href="../vendors/images/apple-touch-icon.png"
+            href="/vendors/images/friendship.png"
     />
     <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="../vendors/images/favicon-32x32.png"
+            href="/vendors/images/favicon-32x32.png"
     />
     <link
             rel="icon"
             type="image/png"
             sizes="16x16"
-            href="../vendors/images/favicon-16x16.png"
+            href="/vendors/images/favicon-16x16.png"
     />
 
     <!-- Mobile Specific Metas -->
@@ -36,23 +36,31 @@
             rel="stylesheet"
     />
     <!-- CSS -->
-    <link rel="stylesheet" type="text/css" href="../vendors/styles/core.css" />
+    <style>
+        .black-text {
+            color: black;
+        }
+        .left-side-bar {
+            background-color: white; /* 배경색을 흰색으로 설정 */
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/core.css" />
     <link
             rel="stylesheet"
             type="text/css"
-            href="../vendors/styles/icon-font.min.css"
+            href="/vendors/styles/icon-font.min.css"
     />
     <link
             rel="stylesheet"
             type="text/css"
-            href="src/plugins/datatables/css/dataTables.bootstrap4.min.css"
+            href="/src/plugins/datatables/css/dataTables.bootstrap4.min.css"
     />
     <link
             rel="stylesheet"
             type="text/css"
-            href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
+            href="/src/plugins/datatables/css/responsive.bootstrap4.min.css"
     />
-    <link rel="stylesheet" type="text/css" href="../vendors/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="/vendors/styles/style.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -173,7 +181,7 @@
                 <div class="dropdown">
                     <a
                             class="no-arrow"
-                            href="./members/login"
+                            href="/members/login"
                     >
                         login
                         <span class="badge notification-active"></span>
@@ -190,7 +198,7 @@
                             data-toggle="dropdown"
                     >
 							<span class="user-icon">
-								<img src="../vendors/images/photo1.jpg" alt="" />
+								<img src="/vendors/images/photo1.jpg" alt="" />
 							</span>
                         <span class="user-name" th:text="${session.id}"></span>
                     </a>
@@ -200,8 +208,8 @@
                         <a class="dropdown-item" th:href="@{'/members/' + ${session.idx}}">
                             <i class="dw dw-user1"></i> Profile</a
                         >
-                        <a class="dropdown-item" href="profile.html"
-                        ><i class="dw dw-settings2"></i> Setting</a
+                        <a class="dropdown-item" th:href="@{'/members/edit/' + ${session.idx}}"
+                        ><i class="dw dw-settings2"></i> Edit</a
                         >
                         <a class="dropdown-item" href="faq.html"
                         ><i class="dw dw-help"></i> Help</a
@@ -214,7 +222,7 @@
             </div>
             <div class="github-link">
                 <a href="https://github.com/dropways/deskapp" target="_blank"
-                ><img src="../vendors/images/github.svg" alt=""
+                ><img src="/vendors/images/github.svg" alt=""
                 /></a>
             </div>
         </div>
@@ -395,13 +403,10 @@
     <div class="left-side-bar">
         <div class="brand-logo">
             <a href="../">
-                <img src="../vendors/images/deskapp-logo.svg" alt="" class="dark-logo" />
-                <img
-                        src="../vendors/images/deskapp-logo-white.svg"
-                        alt=""
-                        class="light-logo"
-                />
+                <img src="/vendors/images/file.png" alt="" class="dark-logo" />
+                <B class="black-text">B반 조경준</B>
             </a>
+
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
             </div>
@@ -535,9 +540,10 @@
                                 ><span class="mtext">Extra Pages</span>
                         </a>
                         <ul class="submenu">
+                            <li th:if="${session.id == 'admin'}"><a th:href="@{'/members/'}">Member List</a></li>
                             <li><a href="blank.html">Blank</a></li>
                             <li><a href="contact-directory.html">Contact Directory</a></li>
-                            <li><a href="blog.html">Blog</a></li>
+                            <li><a th:href="@{'/blogs/'}">Blog</a></li>
                             <li><a href="blog-detail.html">Blog Detail</a></li>
                             <li><a href="product.html">Product</a></li>
                             <li><a href="product-detail.html">Product Detail</a></li>
@@ -618,7 +624,7 @@
                             <span class="micon bi bi-layout-text-window-reverse"></span>
                             <span class="mtext"
                             >Landing Page
-									<img src="../vendors/images/coming-soon.png" alt="" width="25"
+									<img src="/vendors/images/coming-soon.png" alt="" width="25"
                                     /></span>
                         </a>
                     </li>

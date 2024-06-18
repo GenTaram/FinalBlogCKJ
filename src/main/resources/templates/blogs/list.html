@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Basic Page Info -->
+    <meta charset="utf-8"/>
+    <title>Blog List</title>
+    <div th:replace="~{/main/fragments :: head}"></div>
+</head>
+<body>
+<div th:replace="~{/main/fragments :: header}"></div>
+<div th:replace="~{/main/fragments :: right-sidebar}"></div>
+<div th:replace="~{/main/fragments :: left-sidebar}"></div>
+<div class="mobile-menu-overlay"></div>
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Blog List</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Blog List
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div th:if="${session.id != null}">
+                        <a href="/blogs/reg-form" class="btn btn-primary mb-3">Create New Blog</a>
+                    </div>
+                </div>
+                <div class="row" th:each="blog : ${blogs}">
+                    <div class="col-md-4 col-sm-12 mb-30">
+                        <div class="card-box">
+                            <div class="blog-img">
+                                <img src="/vendors/images/img2.jpg" alt="" />
+                            </div>
+                            <div class="blog-caption">
+                                <h4 class="mb-10">
+                                    <a th:href="@{/blogs/{idx}(idx=${blog.idx})}" th:text="${blog.title}">Blog Title</a>
+                                </h4>
+                                <p th:text="${blog.content}">Blog Content</p>
+                                <div class="pt-10">
+                                    <a th:href="@{/blogs/{idx}(idx=${blog.idx})}" class="btn btn-outline-primary">Read More</a>
+                                    <a th:href="@{/blogs/edit/{idx}(idx=${blog.idx})}" class="btn btn-outline-secondary" th:if="${session.idx == blog.writerIdx}">Edit</a>
+                                    <a th:href="@{/blogs/delete/{idx}(idx=${blog.idx})}" class="btn btn-outline-danger" th:if="${session.idx == blog.writerIdx}">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            DeskApp - Bootstrap 4 Admin Template By
+            <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a>
+        </div>
+    </div>
+</div>
+<!-- js -->
+<script src="/vendors/scripts/core.js"></script>
+<script src="/vendors/scripts/script.min.js"></script>
+<script src="/vendors/scripts/process.js"></script>
+<script src="/vendors/scripts/layout-settings.js"></script>
+</body>
+</html>

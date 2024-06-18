@@ -28,7 +28,7 @@ spring:
       validation-timeout: 5000  # 커넥션 유효성 검사 타임아웃 설정 (ms)
       auto-commit: true  # 자동 커밋 모드 설정
 server:
-  port: 8080
+  port: 1111
   servlet:
     session:
       timeout: 600  # 600초 10분임, 기본값 30분

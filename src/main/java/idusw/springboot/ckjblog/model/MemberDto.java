@@ -20,9 +20,11 @@ import java.time.LocalDateTime;
 public class MemberDto { // DTO(Data Transfer Object) or VO(Valuable Object)
     private Long idx;
     private String id;
-    private String pw;
-    private String name;
     private String email;
-    private LocalDateTime regDate; // <- 게시글 등록일자
+    private String name;
+    private String pw;
+    private String phone;
+    private String address;
+    private LocalDateTime regDate; // 게시글 등록 일자
     private LocalDateTime modDate;
 }

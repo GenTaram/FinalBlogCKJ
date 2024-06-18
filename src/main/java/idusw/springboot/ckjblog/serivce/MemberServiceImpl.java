@@ -45,11 +45,27 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public int update(MemberDto memberDto) {
+        Optional<MemberEntity> entityOptional = memberRepository.findById(memberDto.getIdx());
+        if (entityOptional.isPresent()) {
+            MemberEntity entity = entityOptional.get();
+            entity.setEmail(memberDto.getEmail());
+            entity.setName(memberDto.getName());
+            entity.setPw(memberDto.getPw());
+            entity.setPhone(memberDto.getPhone());
+            entity.setAddress(memberDto.getAddress());
+            memberRepository.save(entity);
+            return 1;
+        }
         return 0;
     }
 
     @Override
     public int delete(MemberDto memberDto) {
+        Optional<MemberEntity> entityOptional = memberRepository.findById(memberDto.getIdx());
+        if (entityOptional.isPresent()) {
+            memberRepository.delete(entityOptional.get());
+            return 1;
+        }
         return 0;
     }
 

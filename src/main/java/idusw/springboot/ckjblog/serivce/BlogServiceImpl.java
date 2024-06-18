@@ -55,6 +55,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public int update(BlogDto dto) {
+        blogRepository.save(dtoToEntity(dto));
         return 0;
     }
 
