@@ -11,6 +11,7 @@ public interface MemberService {
     List<MemberDto> readAll();
     int update(MemberDto memberDto);
     int delete(MemberDto memberDto);
+    List<MemberDto> findByName(String name);
 
     MemberDto loginById(MemberDto memberDto); // id / pw 활용
 

@@ -74,4 +74,15 @@ public class MemberServiceImpl implements MemberService {
         Optional<MemberEntity> memberEntityOptional = memberRepository.findByIdAndPw(memberDto.getId(), memberDto.getPw());
         return memberEntityOptional.map(this::entityToDto).orElse(null);
     }
+
+    @Override
+    public List<MemberDto> findByName(String name) {
+        List<MemberEntity> entities = memberRepository.findByName(name);
+        List<MemberDto> dtos = new ArrayList<>();
+        for (MemberEntity entity : entities) {
+            dtos.add(entityToDto(entity));
+        }
+        return dtos;
+    }
+
 }

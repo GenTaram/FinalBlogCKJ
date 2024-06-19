@@ -6,13 +6,42 @@
 	<meta charset="utf-8" />
 	<title>Member List</title>
 	<div th:replace="~{/main/fragments :: head}"></div>
+	<script>
+		function searchTable() {
+			const input = document.getElementById('searchInput').value.toLowerCase();
+			const table = document.getElementById('memberTable');
+			const trs = table.getElementsByTagName('tr');
+
+			for (let i = 1; i < trs.length; i++) {
+				const tds = trs[i].getElementsByTagName('td');
+				let showRow = false;
+				for (let j = 0; j < tds.length; j++) {
+					const td = tds[j];
+					if (td) {
+						const txtValue = td.textContent || td.innerText;
+						if (txtValue.toLowerCase().indexOf(input) > -1) {
+							showRow = true;
+							break;
+						}
+					}
+				}
+				trs[i].style.display = showRow ? '' : 'none';
+			}
+		}
+
+		function searchMembers() {
+			const input = document.getElementById('searchInput').value;
+			if (input) {
+				window.location.href = `/members/list?name=${input}`;
+			}
+		}
+	</script>
 </head>
 <body>
 <div th:replace="~{/main/fragments :: header}"></div>
 <div th:replace="~{/main/fragments :: right-sidebar}"></div>
 <div th:replace="~{/main/fragments :: left-sidebar}"></div>
 <div class="mobile-menu-overlay"></div>
-
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
 		<div class="min-height-200px">
@@ -59,6 +88,10 @@
 						<h4 class="text-blue h4">Basic Table</h4>
 						<p>Add class <code>.table</code></p>
 					</div>
+					<!-- 검색 창 -->
+					<div class="search-container">
+						<input type="text" id="searchInput" onkeyup="searchTable()" placeholder="이름 검색">
+					</div>
 					<div class="pull-right">
 						<a
 								href="#basic-table"
@@ -70,7 +103,7 @@
 						>
 					</div>
 				</div>
-				<table class="table">
+				<table id="memberTable" class="table mt-3">
 					<thead>
 					<tr>
 						<th scope="col">#</th>
@@ -78,6 +111,8 @@
 						<th scope="col">id</th>
 						<th scope="col">name</th>
 						<th scope="col">pw</th>
+						<th scope="col">phone</th>
+						<th scope="col">address</th>
 					</tr>
 					</thead>
 					<tbody>
@@ -87,6 +122,8 @@
 						<td><span th:text="${member.id}">ID</span></td>
 						<td><span th:text="${member.name}">Name</span></td>
 						<td><span th:text="${member.pw}">Password</span></td>
+						<td><span th:text="${member.phone}">Phone</span></td>
+						<td><span th:text="${member.address}">Address</span></td>
 					</tr>
 					</tbody>
 				</table>

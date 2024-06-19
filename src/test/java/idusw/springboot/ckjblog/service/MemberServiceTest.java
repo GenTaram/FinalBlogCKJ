@@ -15,12 +15,14 @@ public class MemberServiceTest {
     MemberService memberService;
     @Test
     public void initMembers() {
-        IntStream.rangeClosed(1, 10).forEach(i -> {
+        IntStream.rangeClosed(1, 9).forEach(i -> {
             MemberDto dto = MemberDto.builder()
                     .id("id-" + i)
                     .pw("cometrue")
                     .name("name-" + i)
                     .email("id-" + i + "@induk.ac.kr")
+                    .address("서울시 노원구 "+ i)
+                    .phone("010-1234-232"+i)
                     .build();
 
             memberService.create(dto);

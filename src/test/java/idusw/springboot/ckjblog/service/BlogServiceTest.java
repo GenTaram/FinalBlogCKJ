@@ -21,9 +21,9 @@ public class BlogServiceTest {
     @Test
     public void registerBlog() {
         BlogDto dto = BlogDto.builder()
-                .title("2024.06.12")
-                .content("에어컨 켜주세요~!")
-                .writerIdx(4L) //idx가 3번인 멤버(blogger)가 미리 생성되어 있어야 함.
+                .title("우아앙")
+                .content("으아앙")
+                .writerIdx(1L) //idx가 3번인 멤버(blogger)가 미리 생성되어 있어야 함.
                 .block("non")
                 .build();
         blogService.create((dto));

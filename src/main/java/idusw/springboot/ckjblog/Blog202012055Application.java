@@ -11,10 +11,10 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 // Spring - Annotation : java, lombok, spring
 //@Configuration
 //@EnableAutoConfiguration
-public class CkjBlogApplication {
+public class Blog202012055Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CkjBlogApplication.class, args);
+		SpringApplication.run(Blog202012055Application.class, args);
 	}
 	@Bean   //메소드를 호출하여 Bean 객체를 생성
 	public HiddenHttpMethodFilter hiddenHttpMethodFilter() {    //put, delete 처리

@@ -109,4 +109,16 @@ public class MemberController {
         }
         return "redirect:/";
     }
+
+    @GetMapping("/search")
+    public String searchMembersByName(@RequestParam(value = "name", required = false) String name, Model model) {
+        List<MemberDto> members;
+        if (name != null && !name.isEmpty()) {
+            members = memberService.findByName(name);
+        } else {
+            members = memberService.readAll();
+        }
+        model.addAttribute("members", members);
+        return "./members/list";  // list.html 뷰를 반환
+    }
 }

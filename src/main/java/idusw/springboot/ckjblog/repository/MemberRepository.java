@@ -4,6 +4,7 @@ import idusw.springboot.ckjblog.entity.MemberEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -12,6 +13,8 @@ public interface MemberRepository extends
 
     Optional<MemberEntity> findByIdx(Long idx);
     Optional<MemberEntity> findByIdAndPw(String id, String pw);
+
+    List<MemberEntity> findByName(String name);
 
     //QuerydslPredicateExecutor<MemberEntity> {
     /*
