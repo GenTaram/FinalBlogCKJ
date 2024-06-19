@@ -33,7 +33,8 @@ public class BlogServiceImpl implements BlogService {
     public BlogDto read(BlogDto dto) {
         Optional<BlogEntity> blogEntityOptional = blogRepository.findById(dto.getIdx());
         //Optional<BlogEntity> entity =blogRepository.findByIdx(dto);
-        Optional<MemberEntity> memberEntityOptional = memberRepository.findByIdx(blogEntityOptional.get().getBlogger().getIdx());
+        Optional<MemberEntity> memberEntityOptional =
+                memberRepository.findByIdx(blogEntityOptional.get().getBlogger().getIdx());
         return entityToDto(blogEntityOptional.get(), memberEntityOptional.get());
     }
 

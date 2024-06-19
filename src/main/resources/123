@@ -1,0 +1,18 @@
+show databases;
+
+create database blog_b202012055;
+
+select * from mysql.user;
+
+ALTER TABLE member
+    ADD COLUMN phone VARCHAR(15),
+    ADD COLUMN address VARCHAR(255);
+
+insert into member (email, id, name, pw, address,phone) values ('admin@induk.ac.kr','admin','관리자','cometrue','서울','010-4567-1234');
+
+
+create user 'b202012055' identified by 'cometrue';
+grant all privileges on *.* to 'b202012055';
+
+delete from mysql.user where user='b202012055';
+show tables;
